@@ -4,10 +4,8 @@ import { Button, Container } from "react-bootstrap";
 export default function Footer() {
   return (
     <Container>
-      <Button variant="secondary">
-        test
-      </Button>
-      <p className="p-5 bg-light">asdasdadadasd as asd</p>
+
+      <p className="p-5 bg-light fixed-bottom">FOOTER</p>
     </Container>
   );
 }
