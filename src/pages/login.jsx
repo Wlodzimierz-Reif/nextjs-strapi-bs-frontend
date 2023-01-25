@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useQuery, gql, useMutation } from "@apollo/client";
 import axios from "axios";
+// import { cookies } from "next/headers";
 
 // const LOGIN = gql`
 //   mutation signin {
@@ -15,31 +16,26 @@ export default function Login() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
-//   const [doLogIn, { data, loading, error }] = useMutation(LOGIN);
+  //   const nextCookies = cookies();
 
-//  console.log('%c [qq]: data ', 'background: #fbff00; color: #000000; font-size: 1rem; padding: 0.2rem 0; margin: 0.5rem;', '\n', data, '\n\n');
+  //   const [doLogIn, { data, loading, error }] = useMutation(LOGIN);
 
-    const handleSignIn = async () => {
-      // const data = await axios.post("http://localhost:1337/api/login", {
-      //   identifier: login,
-      //   password: password,
-      // });
-
-      // console.log("User profile: ", data.user);
-      // console.log("User token: ", data.jwt);
-      axios
-        .post("http://localhost:3000/api/login", {
-          identifier: login,
-          password: password,
-        })
-        .then((response) => {
-          console.log("User profile: ", response.data.user);
-          console.log("User token: ", response.data.jwt);
-        })
-        .catch((error) => {
-          console.log("An error occurred:", error.response);
-        });
-    };
+  const handleSignIn = async () => {
+    axios
+      .post("http://localhost:3000/api/login", {
+        identifier: login,
+        password: password,
+      })
+      .then((response) => {
+        // console.log(response.headers);
+        // console.log("User profile: ", response.data);
+        // console.log("User token: ", response.data);
+        process.env.SECRET = response.data.jwt;
+      })
+      .catch((error) => {
+        console.log("An error occurred:", error.response);
+      });
+  };
 
   return (
     <div className="input-group mb-3">
@@ -68,6 +64,12 @@ export default function Login() {
       <Button variant="info" onClick={handleSignIn}>
         Login
       </Button>
+      {/* {nextCookies.getAll().map((cookie) => (
+        <div key={cookie.name}>
+          <p>Name: {cookie.name}</p>
+          <p>Value: {cookie.value}</p>
+        </div>
+      ))} */}
     </div>
   );
 }

@@ -1,9 +1,13 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import Cookies from "cookies";
 
 export default function handler(req, res) {
   // res.status(200).json({ name: 'John Doe' })
-  if (req.method !== 'POST') {
-    res.status(405).send({ message: 'Only POST requests allowed' })
-    return
-  }
+
+  const cookies = new Cookies(req, res);
+
+  const cookie = cookies.get("Authorization");
+
+  // console.log(cookie);
+
+  return res.status(200).json({ name: "John Doe" });
 }

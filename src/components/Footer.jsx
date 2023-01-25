@@ -4,8 +4,9 @@ import { Button, Container } from "react-bootstrap";
 export default function Footer() {
   return (
     <Container>
-
-      <p className="p-5 bg-light fixed-bottom">FOOTER</p>
+      <p className=" bg-light fixed-bottom d-flex justify-content-center">
+        FOOTER
+      </p>
     </Container>
   );
 }

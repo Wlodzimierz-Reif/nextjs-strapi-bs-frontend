@@ -1,21 +1,22 @@
 import axios from "axios";
+import Cookies from "cookies";
+import { NextResponse } from "next/server";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const response = await handleSignIn(req.body.identifier, req.body.password);
-    //   document.cookie = `${response.data.jwt}; HttpOnly`
-      res.send({ message: `jwt: ${response.data.jwt}` });
-      // attach http-only cookie with jwt
-    } catch (e) {
-      console.log(
-        "%c [qq]: e ",
-        "background: #fbff00; color: #000000; font-size: 1rem; padding: 0.2rem 0; margin: 0.5rem;",
-        "\n",
-        e,
-        "\n\n",
+      const response = await handleSignIn(
+        req.body.identifier,
+        req.body.password,
       );
-      res.cookie('jwt', response.data.jwt)
+      //   res.send({ message: `jwt: ${response.data.jwt}` });
+      const cookies = new Cookies(req, res);
+
+      cookies.set("Authorization", response.data.jwt, { httpOnly: true });
+
+      res.send({ message: "success@" });
+    } catch (e) {
+      console.log("error:", e);
       return res.send({ message: "Sent message failed" });
     }
   }

@@ -23,14 +23,14 @@ const authLink = new ApolloLink((operation, forward) => {
   // const token = localStorage.getItem('auth_token');
 
   // Use the setContext method to set the HTTP headers.
-  operation.setContext({
-    headers: {
-      authorization:
-        // token ?
-        `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc0MTk4MzAyLCJleHAiOjE2NzY3OTAzMDJ9.9T_nI23Uu1dSdZnni8bTfmHbD0tdnSGLzKjREUYp-GQ`,
-      // : ''
-    },
-  });
+  // operation.setContext({
+  //   headers: {
+  //     authorization:
+  //       // token ?
+  //       `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc0MTk4MzAyLCJleHAiOjE2NzY3OTAzMDJ9.9T_nI23Uu1dSdZnni8bTfmHbD0tdnSGLzKjREUYp-GQ`,
+  //     // : ''
+  //   },
+  // });
 
   // Call the next link in the middleware chain.
   return forward(operation);

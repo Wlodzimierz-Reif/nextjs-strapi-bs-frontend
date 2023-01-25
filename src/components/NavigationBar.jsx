@@ -10,7 +10,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 function NavigationBar() {
   return (
     <Navbar bg="light" expand="lg">
-      <Container>
+      <Container className="nav-container">
         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -24,7 +24,7 @@ function NavigationBar() {
             <Link href="/" passHref legacyBehavior>
               <Nav.Link>Home</Nav.Link>
             </Link>
-            <Link href="/about" passHref legacyBehavior>
+            {/* <Link href="/about" passHref legacyBehavior>
               <Nav.Link>About</Nav.Link>
             </Link>
             <Link href="/terminals" passHref legacyBehavior>
@@ -32,14 +32,22 @@ function NavigationBar() {
             </Link>
             <Link href="/tanks" passHref legacyBehavior>
               <Nav.Link>Storage tanks</Nav.Link>
+            </Link> */}
+            <Link href="/existing-customers" passHref legacyBehavior>
+              <Nav.Link>Existing customers</Nav.Link>
+            </Link>
+            <Link href="/contact-us" passHref legacyBehavior>
+              <Nav.Link>Contact us</Nav.Link>
             </Link>
 
-            <NavDropdown title="What's in store" id="basic-nav-dropdown">
-              <Link href="/smalltanks" passHref legacyBehavior>
-                <NavDropdown.Item>Small tanks</NavDropdown.Item>
+            <NavDropdown title="Existing customers" id="basic-nav-dropdown">
+              <Link href="/existing-customers/fees" passHref legacyBehavior>
+                <NavDropdown.Item>Fees and charges</NavDropdown.Item>
               </Link>
-              <Link href="/largetanks" passHref legacyBehavior>
-                <NavDropdown.Item>Large tanks</NavDropdown.Item>
+              <Link href="/statement-information" passHref legacyBehavior>
+                <NavDropdown.Item>
+                  Statement & balance information
+                </NavDropdown.Item>
               </Link>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">
